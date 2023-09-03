@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdSense Revenue Calculator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+         background-image: url(https://media.istockphoto.com/id/513633323/photo/business-person-using-a-calculator.jpg?s=2048x2048&w=is&k=20&c=sH3pmAFuXZfM93DEX13zYrNn42p6WB1_EvpfdnJgO1A=);
+ }
+
+        .container {
+            width: 400px;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AdSense Revenue Calculator</h1>
+        <label for="clicks">Number of Clicks:</label>
+        <input type="number" id="clicks" placeholder="Enter the number of clicks" required>
+
+        <label for="cpc">Cost Per Click (CPC) in USD:</label>
+        <input type="number" id="cpc" placeholder="Enter CPC" step="0.01" required>
+
+        <label for="ctr">Click Through Rate (CTR) in %:</label>
+        <input type="number" id="ctr" placeholder="Enter CTR" step="0.01" required>
+
+        <label for="cpm">Cost Per Mille (CPM) in USD:</label>
+        <input type="number" id="cpm" placeholder="Enter CPM" step="0.01" required>
+
+        <button onclick="calculateRevenue()">Calculate Revenue</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function calculateRevenue() {
+            const clicks = parseFloat(document.getElementById("clicks").value);
+            const cpc = parseFloat(document.getElementById("cpc").value);
+            const ctr = parseFloat(document.getElementById("ctr").value);
+            const cpm = parseFloat(document.getElementById("cpm").value);
+
+            const revenue = (clicks * cpc) + ((clicks * ctr / 100) * cpm);
+
+            const resultElement = document.getElementById("result");
+            resultElement.textContent = `Estimated Revenue: $${revenue.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>
